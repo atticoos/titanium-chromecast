@@ -26,6 +26,7 @@
 		24DD6CFA1134B3F500162E58 /* ComAtticoosTitaniumChromecastModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComAtticoosTitaniumChromecastModule.m */; };
 		24DE9E1111C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.h */; };
 		24DE9E1211C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.m */; };
+		5D1F38AE1A4618C5000A1FE2 /* GoogleCast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1F38AD1A4618C5000A1FE2 /* GoogleCast.framework */; };
 		AA747D9F0F9514B9006C5449 /* ComAtticoosTitaniumChromecast_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComAtticoosTitaniumChromecast_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -41,14 +42,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		24DD6CF71134B3F500162E58 /* ComAtticoosTitaniumChromecastModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ComAtticoosTitaniumChromecastModule.h"; path = "Classes/ComAtticoosTitaniumChromecastModule.h"; sourceTree = "<group>"; };
-		24DD6CF81134B3F500162E58 /* ComAtticoosTitaniumChromecastModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ComAtticoosTitaniumChromecastModule.m"; path = "Classes/ComAtticoosTitaniumChromecastModule.m"; sourceTree = "<group>"; };
+		24DD6CF71134B3F500162E58 /* ComAtticoosTitaniumChromecastModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAtticoosTitaniumChromecastModule.h; path = Classes/ComAtticoosTitaniumChromecastModule.h; sourceTree = "<group>"; };
+		24DD6CF81134B3F500162E58 /* ComAtticoosTitaniumChromecastModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAtticoosTitaniumChromecastModule.m; path = Classes/ComAtticoosTitaniumChromecastModule.m; sourceTree = "<group>"; };
 		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
-		24DE9E0F11C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ComAtticoosTitaniumChromecastModuleAssets.h"; path = "Classes/ComAtticoosTitaniumChromecastModuleAssets.h"; sourceTree = "<group>"; };
-		24DE9E1011C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "ComAtticoosTitaniumChromecastModuleAssets.m"; path = "Classes/ComAtticoosTitaniumChromecastModuleAssets.m"; sourceTree = "<group>"; };
-		AA747D9E0F9514B9006C5449 /* ComAtticoosTitaniumChromecast_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ComAtticoosTitaniumChromecast_Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		24DE9E0F11C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAtticoosTitaniumChromecastModuleAssets.h; path = Classes/ComAtticoosTitaniumChromecastModuleAssets.h; sourceTree = "<group>"; };
+		24DE9E1011C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAtticoosTitaniumChromecastModuleAssets.m; path = Classes/ComAtticoosTitaniumChromecastModuleAssets.m; sourceTree = "<group>"; };
+		5D1F38AD1A4618C5000A1FE2 /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = platform/GoogleCast.framework; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* ComAtticoosTitaniumChromecast_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAtticoosTitaniumChromecast_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D2AAC07E0554694100DB518D /* libComAtticoosTitaniumChromecast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libComAtticoosTitaniumChromecast.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AAC07E0554694100DB518D /* libComAtticoosTitaniumChromecast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComAtticoosTitaniumChromecast.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D1F38AE1A4618C5000A1FE2 /* GoogleCast.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +88,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D1F38AD1A4618C5000A1FE2 /* GoogleCast.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -214,11 +218,15 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DSTROOT = "/tmp/ComAtticoosTitaniumChromecast.dst";
+				DSTROOT = /tmp/ComAtticoosTitaniumChromecast.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/platform",
+				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ComAtticoosTitaniumChromecast_Prefix.pch";
+				GCC_PREFIX_HEADER = ComAtticoosTitaniumChromecast_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -237,7 +245,7 @@
 					"-DTI_POST_1_2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "ComAtticoosTitaniumChromecast";
+				PRODUCT_NAME = ComAtticoosTitaniumChromecast;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -251,11 +259,15 @@
 			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				DSTROOT = "/tmp/ComAtticoosTitaniumChromecast.dst";
+				DSTROOT = /tmp/ComAtticoosTitaniumChromecast.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/platform",
+				);
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ComAtticoosTitaniumChromecast_Prefix.pch";
+				GCC_PREFIX_HEADER = ComAtticoosTitaniumChromecast_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -272,7 +284,7 @@
 				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "ComAtticoosTitaniumChromecast";
+				PRODUCT_NAME = ComAtticoosTitaniumChromecast;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -286,11 +298,11 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DSTROOT = "/tmp/ComAtticoosTitaniumChromecast.dst";
+				DSTROOT = /tmp/ComAtticoosTitaniumChromecast.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ComAtticoosTitaniumChromecast_Prefix.pch";
+				GCC_PREFIX_HEADER = ComAtticoosTitaniumChromecast_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -308,7 +320,7 @@
 					"-DTI_POST_1_2",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "ComAtticoosTitaniumChromecast";
+				PRODUCT_NAME = ComAtticoosTitaniumChromecast;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
@@ -323,11 +335,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LIBRARY = "libstdc++";
-				DSTROOT = "/tmp/ComAtticoosTitaniumChromecast.dst";
+				DSTROOT = /tmp/ComAtticoosTitaniumChromecast.dst;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ComAtticoosTitaniumChromecast_Prefix.pch";
+				GCC_PREFIX_HEADER = ComAtticoosTitaniumChromecast_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
 				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
@@ -343,7 +355,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DTI_POST_1_2";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "ComAtticoosTitaniumChromecast";
+				PRODUCT_NAME = ComAtticoosTitaniumChromecast;
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = "";
