@@ -1,0 +1,17 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 2
+description: titanium-chromecast
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2014 by Your Company
+
+# these should not be edited
+name: titanium-chromecast
+moduleid: com.atticoos.titanium.chromecast
+guid: afc5487a-45f3-43da-b0db-b30134a33930
+platform: iphone
+minsdk: 3.4.0.GA
