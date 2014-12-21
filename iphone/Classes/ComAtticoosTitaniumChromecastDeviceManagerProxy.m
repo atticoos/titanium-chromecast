@@ -33,23 +33,11 @@
     [self.deviceScanner stopScan];
 }
 
--(NSArray*)getDiscoveredDevices:(id)args
-{
-    NSArray *devices = self.deviceScanner.devices;
-    NSMutableArray *seralizedDevices = [[NSMutableArray alloc] initWithCapacity: [devices count]];
-    
-    for (int i = 0; i < [devices count]; i++) {
-        [seralizedDevices addObject: [[Device alloc] initWithDevice:[devices objectAtIndex: i]]];
-    }
-    
-    NSArray *finalArray = [NSArray arrayWithArray:seralizedDevices];
-    return finalArray;
-}
-
 -(void)deviceDidComeOnline:(GCKDevice *)device
 {
     NSLog(@"Device came online %@", device.friendlyName);
-    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[Device alloc] initWithDevice:device], @"device", nil];
+    Device *deviceProxy = [[Device alloc] initWithDevice:device];
+    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:deviceProxy, @"device", nil];
     [self fireEvent:@"deviceOnline" withObject: event];
 }
 
@@ -58,6 +46,20 @@
     NSLog(@"Device went offline %@", device.friendlyName);
     NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[Device alloc] initWithDevice:device], @"device", nil];
     [self fireEvent:@"deviceOffline" withObject: event];
+}
+
+-(NSArray*)getDiscoveredDevices:(id)args
+{
+    NSArray *devices = self.deviceScanner.devices;
+    NSMutableArray *seralizedDevices = [[NSMutableArray alloc] initWithCapacity: [devices count]];
+    
+    for (int i = 0; i < [devices count]; i++) {
+        GCKDevice* currentDevice = [devices objectAtIndex: i];
+        [seralizedDevices addObject: [[Device alloc] initWithDevice:currentDevice]];
+    }
+    
+    NSArray *finalArray = [NSArray arrayWithArray:seralizedDevices];
+    return finalArray;
 }
 
 @end

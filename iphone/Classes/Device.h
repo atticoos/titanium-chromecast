@@ -18,4 +18,6 @@
 -(id)ipAddress;
 -(id)deviceID;
 
+-(NSDictionary*)toJSON:(id)args;
+
 @end

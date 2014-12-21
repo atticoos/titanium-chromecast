@@ -11,7 +11,10 @@
 
 -(instancetype)initWithDevice:(GCKDevice*)device
 {
-    self.device = device;
+    if (self = [super init]) {
+        self.device = device;
+    }
+    return self;
 }
 
 -(id)friendlyName
@@ -27,6 +30,19 @@
 -(id)deviceID
 {
     return self.device.deviceID;
+}
+
+-(NSDictionary*)toJSON:(id)args
+{
+    NSDictionary *json = [NSDictionary dictionaryWithObjectsAndKeys:
+                          self.device.friendlyName, @"friendlyName",
+                          self.device.ipAddress, @"ipAddress",
+                          self.device.deviceID, @"deviceID",
+                          self.device.manufacturer, @"manufacturer",
+                          self.device.modelName, @"modelName",
+                          self.device.statusText, @"statusText",
+                          nil];
+    return json;
 }
 
 @end
