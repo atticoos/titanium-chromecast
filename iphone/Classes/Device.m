@@ -47,17 +47,54 @@
     return json;
 }
 
+
 -(void)connect:(id)args
 {
     ENSURE_UI_THREAD(connect, args);
-    self.onDeviceSuccessfullyConnectedCallback = [args objectAtIndex: 0];
+    NSUInteger argC = [args count];
+    
+    if (argC > 0) {
+        ENSURE_TYPE([args objectAtIndex:0], KrollCallback);
+        self.onDeviceSuccessfullyConnectedCallback = [args objectAtIndex: 0];
+    }
+    if (argC > 1) {
+        ENSURE_TYPE([args objectAtIndex: 1], KrollCallback);
+        self.onDeviceFailedToConnectCallback = [args objectAtIndex: 1];
+    }
     [self.deviceManager connect:self];
 }
 
 -(void)launchApplication:(id)args
 {
-    self.onApplicationSuccesfullyLaunchedCallback = [args objectAtIndex: 0];
+    NSUInteger argC = [args count];
+    if (argC > 0) {
+        ENSURE_TYPE([args objectAtIndex:0], KrollCallback);
+        self.onApplicationSuccesfullyLaunchedCallback = [args objectAtIndex: 0];
+    }
+    if (argC > 1) {
+        ENSURE_TYPE([args objectAtIndex:1], KrollCallback);
+        self.onApplicationFailedToLaunchCallback = [args objectAtIndex: 1];
+    }
     [self.deviceManager launchApplication];
+}
+
+-(void)addChannel:(id)channelNamespace
+{
+    ENSURE_SINGLE_ARG(channelNamespace, NSString);
+    NSLog(@"Attemping to connect to %@", channelNamespace);
+    [self.deviceManager addChannel:channelNamespace];
+}
+
+-(void)sendMessage:(id)args
+{
+    NSLog(@"Attemping to send message from device");
+    [self.deviceManager sendMessage:@"Hello World!!!"];
+}
+
+-(void)onMessageReceived:(NSString*)message
+{
+    NSDictionary *messageDictionary = [NSDictionary dictionaryWithObjectsAndKeys: message, @"message", nil];
+    [self fireEvent:@"messageReceived" withObject:messageDictionary];
 }
 
 
@@ -88,7 +125,7 @@
 -(void)onApplicationFailedToLaunch:(NSError*)error
 {
     if (self.onApplicationFailedToLaunchCallback != nil) {
-        [self.onApplicationFailedToLaunchCallback call:@[] thisObject:self];
+        [self.onApplicationFailedToLaunchCallback call:@[[error localizedDescription]] thisObject:self];
     }
 }
 

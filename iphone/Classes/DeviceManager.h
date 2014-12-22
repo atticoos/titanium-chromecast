@@ -7,6 +7,7 @@
 //
 
 #import <GoogleCast/GoogleCast.h>
+#import "Channel.h"
 #import "Device.h"
 #import "DeviceManagerDelegate.h"
 
@@ -15,5 +16,6 @@
 @property(nonatomic, strong) Device* device;
 @property(nonatomic, strong) NSString* APPID;
 @property(nonatomic, strong) GCKDeviceManager* manager;
+@property(nonatomic, strong) Channel *channel;
 
 @end
