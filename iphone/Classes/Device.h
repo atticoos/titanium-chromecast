@@ -26,8 +26,10 @@
 -(void)connect:(id)args;
 -(void)launchApplication:(id)args;
 -(void)addChannel:(id)args;
--(void)sendMessage:(id)args;
+-(void)removeChannel:(id)args;
+-(void)sendMessage:(id)message;
 
+-(BOOL)isConnected:(id)args;
 
 
 
@@ -42,7 +44,7 @@
 // callback interface
 -(void)onDeviceSuccessfullyConnected;
 -(void)onDeviceFailedToConnect:(NSError*)error;
--(void)onApplicationSuccessfullyLaunched;
+-(void)onApplicationSuccessfullyLaunched:(NSString*)sessionID launchedApplication:(BOOL)launchedApplication;
 -(void)onApplicationFailedToLaunch:(NSError*)error;
 
 

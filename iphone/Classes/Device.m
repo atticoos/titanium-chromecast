@@ -85,10 +85,16 @@
     [self.deviceManager addChannel:channelNamespace];
 }
 
--(void)sendMessage:(id)args
+-(void)removeChannel:(id)args
+{
+    [self.deviceManager removeChannel];
+}
+
+-(void)sendMessage:(id)message
 {
     NSLog(@"Attemping to send message from device");
-    [self.deviceManager sendMessage:@"Hello World!!!"];
+    ENSURE_SINGLE_ARG(message, NSString);
+    [self.deviceManager sendMessage:message];
 }
 
 -(void)onMessageReceived:(NSString*)message
@@ -97,6 +103,16 @@
     [self fireEvent:@"messageReceived" withObject:messageDictionary];
 }
 
+-(BOOL)isConnected:(id)args
+{
+    return [self.deviceManager isDeviceEqualToConnectedDevice:self];
+}
+
+-(BOOL)isConnectedToApp:(id)args
+{
+    return [self.deviceManager isDeviceEqualToConnectedDevice:self] &&
+    [self.deviceManager isConnectedToApp];
+}
 
 
 #pragma mark Callbacks
@@ -104,21 +120,21 @@
 {
     NSLog(@"Device has been pinged of the succesful connection!");
     if (self.onDeviceSuccessfullyConnectedCallback != nil) {
-        [self.onDeviceSuccessfullyConnectedCallback call:@[@"Hello World"] thisObject: self];
+        [self.onDeviceSuccessfullyConnectedCallback call:@[] thisObject: self];
     }
 }
 
 -(void)onDeviceFailedToConnect:(NSError*)error
 {
     if (self.onDeviceFailedToConnectCallback != nil) {
-        [self.onDeviceFailedToConnectCallback call:@[] thisObject:self];
+        [self.onDeviceFailedToConnectCallback call:@[[error localizedDescription]] thisObject:self];
     }
 }
 
--(void)onApplicationSuccessfullyLaunched
+-(void)onApplicationSuccessfullyLaunched:(NSString*)sessionID launchedApplication:(BOOL)launchedApplication
 {
     if (self.onApplicationSuccesfullyLaunchedCallback != nil) {
-        [self.onApplicationSuccesfullyLaunchedCallback call:@[@"Hello World"] thisObject:self];
+        [self.onApplicationSuccesfullyLaunchedCallback call:@[sessionID] thisObject:self];
     }
 }
 
