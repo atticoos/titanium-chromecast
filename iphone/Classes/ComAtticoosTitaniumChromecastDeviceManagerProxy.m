@@ -23,6 +23,7 @@
 -(void)startScanning:(id)args
 {
     ENSURE_UI_THREAD_0_ARGS
+    self.deviceManager.APPID = [self valueForUndefinedKey:@"app"];
     [self.deviceScanner addListener: self];
     [self.deviceScanner startScan];
 }
@@ -33,6 +34,50 @@
     [self.deviceScanner stopScan];
 }
 
+-(BOOL)isScanning:(id)args
+{
+    return [self.deviceScanner scanning];
+}
+
+-(BOOL)isConnected:(id)args
+{
+    return [self.deviceManager.manager isConnected];
+}
+
+-(BOOL)isConnectedToApp:(id)args
+{
+    return [self.deviceManager.manager isConnectedToApp];
+}
+
+-(NSString*)getConnectedAppSessionID:(id)args
+{
+    return [self.deviceManager.manager applicationSessionID];
+}
+
+-(NSString*)getConnectedAppStatusText:(id)args
+{
+    return [self.deviceManager.manager applicationStatusText];
+}
+
+
+
+
+-(NSArray*)getDiscoveredDevices:(id)args
+{
+    NSArray *devices = self.deviceScanner.devices;
+    NSMutableArray *seralizedDevices = [[NSMutableArray alloc] initWithCapacity: [devices count]];
+    
+    for (int i = 0; i < [devices count]; i++) {
+        GCKDevice* currentDevice = [devices objectAtIndex: i];
+        [seralizedDevices addObject: [[Device alloc] initWithDevice:currentDevice initWithDeviceManager: self.deviceManager]];
+    }
+    
+    NSArray *finalArray = [NSArray arrayWithArray:seralizedDevices];
+    return finalArray;
+}
+
+
+#pragma mark Events
 -(void)deviceDidComeOnline:(GCKDevice *)device
 {
     NSLog(@"Device came online %@", device.friendlyName);
@@ -49,18 +94,5 @@
     [self fireEvent:@"deviceOffline" withObject: event];
 }
 
--(NSArray*)getDiscoveredDevices:(id)args
-{
-    NSArray *devices = self.deviceScanner.devices;
-    NSMutableArray *seralizedDevices = [[NSMutableArray alloc] initWithCapacity: [devices count]];
-    
-    for (int i = 0; i < [devices count]; i++) {
-        GCKDevice* currentDevice = [devices objectAtIndex: i];
-        [seralizedDevices addObject: [[Device alloc] initWithDevice:currentDevice initWithDeviceManager: self.deviceManager]];
-    }
-    
-    NSArray *finalArray = [NSArray arrayWithArray:seralizedDevices];
-    return finalArray;
-}
 
 @end

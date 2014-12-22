@@ -37,7 +37,7 @@
 
 -(void)launchApplication
 {
-    [self.manager launchApplication:@"794B7BBF"];
+    [self.manager launchApplication:self.APPID];
 }
 
 -(void)addChannel:(NSString*)nameSpace
@@ -45,6 +45,14 @@
     if ([self.manager isConnectedToApp]) {
         self.channel = [[Channel alloc] initWithDelegate:self initWithNamespace:[NSString stringWithFormat:@"urn:x-cast:%@", nameSpace]];
         [self.manager addChannel:self.channel];
+    }
+}
+
+-(void)removeChannel
+{
+    if (self.channel != nil) {
+        [self.manager removeChannel:self.channel];
+        self.channel = nil;
     }
 }
 
@@ -62,10 +70,19 @@
     [self.device onMessageReceived:message];
 }
 
+-(BOOL)isDeviceEqualToConnectedDevice:(Device *)device
+{
+    return self.device == device;
+}
+
+-(BOOL)isConnectedToApp
+{
+    return [self.manager isConnectedToApp];
+}
+
 -(void)deviceDisconnected {
     if (self.manager != nil) {
         [self.manager disconnect];
-        [self.manager release];
     }
     self.manager = nil;
     self.channel = nil;
@@ -82,7 +99,7 @@
 -(void)deviceManager:(GCKDeviceManager *)deviceManager didConnectToCastApplication:(GCKApplicationMetadata *)applicationMetadata sessionID:(NSString *)sessionID launchedApplication:(BOOL)launchedApplication
 {
     NSLog(@"Application launched!");
-    [self.device onApplicationSuccessfullyLaunched];
+    [self.device onApplicationSuccessfullyLaunched:sessionID launchedApplication:launchedApplication];
 }
 
 -(void)deviceManager:(GCKDeviceManager *)deviceManager didFailToConnectToApplicationWithError:(NSError *)error

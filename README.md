@@ -11,7 +11,9 @@ This project introduces support for GoogeCast to allow your applications to conn
 var Chromecast = require('com.atticoos.titanium.chromecast');
 
 // create an instance of the device manager
-var deviceManager = Chromecast.createDeviceManager(APP_ID);
+var deviceManager = Chromecast.createDeviceManager({
+	app: "APP_ID" // required
+});
 
 // listen for new devices
 deviceManager.addEventListener('deviceOnline', function (e) {
@@ -53,10 +55,32 @@ Returns: `Array`
 
 Returns a collection of discovered [Devices](#devices).
 
+
+#### DeviceManager.isScanning()
+Returns: `Boolean` Default: `false`
+
+Returns true/false depending on if the scanner is running
+
 #### DeviceManager.isConnected()
-Returns: `Boolean`
+Returns: `Boolean` Default: `false`
 
 Returns true/false depending on if there is a connected device
+
+
+#### DeviceManager.isConnectedToApp()
+Returns: `Boolean` Default: `false`
+
+Returns true/false depending on if the application is connected
+
+#### DeviceManager.getConnectedAppSessionID()
+Returns: `String` Default: `null`
+
+Returns the sessionID of the connected application
+
+#### DeviceManager.getConnectedAppStatusText()
+Returns: `String` Default: `null`
+
+Returns the status text of the connected application
 
 
 
@@ -76,16 +100,36 @@ This is the device component that returns the information about the current devi
 ### Methods
 
 #### Device.connect(successCallback, errorCallback)
+Returns: `void`
 Connects to a device and executes the callback once connected or encounters an error
 
 #### Device.launchApplication(successCallback, errorCallback)
+Returns: `void`
 Starts the application on a device and executes the callback once connected or encounters an error
 
 #### Device.addChannel(namespace)
+Returns: `void`
 Creates a channel over the provided namespace on the device
 
+#### Device.removeChannel()
+Returns: `void`
+Removes a channel that was previously added, otherwise does nothing
+
 #### Device.sendMessage(string)
+Returns: `void`
 Sends a message over the channel to the chromecast app
+
+#### Device.isConnected()
+Returns: `Boolean` Default: `false`
+
+Returns true/false if this device is connected
+
+#### Device.isConnectedToApp()
+Returns: `Boolean` Default: `false`
+
+returns true/false if this device is connected to the application on the chromecast
+
+
 
 ### Events
 #### messageReceived

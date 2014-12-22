@@ -12,8 +12,12 @@
 
 -(void)connect:(Device*)device;
 -(void)launchApplication;
+-(void)removeChannel;
 -(void)addChannel:(NSString*)nameSpace;
 -(void)sendMessage:(NSString*)message;
 -(void)onChannelMessage:(NSString*)message;
+
+-(BOOL)isDeviceEqualToConnectedDevice:(Device*)device;
+-(BOOL)isConnectedToApp;
 
 @end

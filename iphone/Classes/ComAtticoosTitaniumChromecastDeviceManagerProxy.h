@@ -18,6 +18,11 @@
 
 -(void)startScanning:(id)args;
 -(void)stopScanning:(id)args;
+-(BOOL)isScanning:(id)args;
+-(BOOL)isConnected:(id)args;
+-(BOOL)isConnectedToApp:(id)args;
+-(NSString*)getConnectedAppSessionID:(id)args;
+-(NSString*)getConnectedAppStatusText:(id)args;
 -(NSArray*)getDiscoveredDevices:(id)args;
 
 
