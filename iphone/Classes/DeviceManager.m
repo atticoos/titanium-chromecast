@@ -40,11 +40,35 @@
     [self.manager launchApplication:@"794B7BBF"];
 }
 
+-(void)addChannel:(NSString*)nameSpace
+{
+    if ([self.manager isConnectedToApp]) {
+        self.channel = [[Channel alloc] initWithDelegate:self initWithNamespace:[NSString stringWithFormat:@"urn:x-cast:%@", nameSpace]];
+        [self.manager addChannel:self.channel];
+    }
+}
+
+// channel - send message, forward message to channel
+-(void)sendMessage:(NSString*)message
+{
+    if (self.channel != nil) {
+        [self.channel sendTextMessage:message];
+    }
+}
+
+// channel - message received, forward back to proxy
+-(void)onChannelMessage:(NSString*)message
+{
+    [self.device onMessageReceived:message];
+}
 
 -(void)deviceDisconnected {
-    [self.manager release];
+    if (self.manager != nil) {
+        [self.manager disconnect];
+        [self.manager release];
+    }
     self.manager = nil;
-//    self.channel = nil;
+    self.channel = nil;
     self.device = nil;
 }
 
@@ -59,21 +83,19 @@
 {
     NSLog(@"Application launched!");
     [self.device onApplicationSuccessfullyLaunched];
-//    self.channel = [[Channel alloc] initWithNamespace:@"urn:x-cast:com.google.cast.sample.helloworld"];
-//    [self.manager addChannel:self.channel];
 }
 
 -(void)deviceManager:(GCKDeviceManager *)deviceManager didFailToConnectToApplicationWithError:(NSError *)error
 {
     NSLog(@"application failed to launch");
-    [self.device onApplicationFailedToLaunch];
+    [self.device onApplicationFailedToLaunch:error];
 }
 
 
 -(void)deviceManager:(GCKDeviceManager *)deviceManager didFailToConnectWithError:(NSError *)error
 {
     NSLog(@"Failed to connect!");
-    [self.device onDeviceFailedToConnect];
+    [self.device onDeviceFailedToConnect:error];
 }
 
 -(void)deviceManager:(GCKDeviceManager *)deviceManager didDisconnectWithError:(NSError *)error

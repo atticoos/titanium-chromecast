@@ -25,6 +25,9 @@
 -(NSDictionary*)toJSON:(id)args;
 -(void)connect:(id)args;
 -(void)launchApplication:(id)args;
+-(void)addChannel:(id)args;
+-(void)sendMessage:(id)args;
+
 
 
 
@@ -41,5 +44,10 @@
 -(void)onDeviceFailedToConnect:(NSError*)error;
 -(void)onApplicationSuccessfullyLaunched;
 -(void)onApplicationFailedToLaunch:(NSError*)error;
+
+
+// EVENT TRIGGERS
+
+-(void)onMessageReceived:(NSString*)message;
 
 @end
