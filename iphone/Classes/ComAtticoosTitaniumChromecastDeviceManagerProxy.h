@@ -7,12 +7,12 @@
 //
 
 #import "TiProxy.h"
+#import "DeviceManager.h"
 #import <GoogleCast/GoogleCast.h>
 
 @interface ComAtticoosTitaniumChromecastDeviceManagerProxy : TiProxy<GCKDeviceScannerListener,
-                                                                    GCKDeviceManagerDelegate,
                                                                     GCKMediaControlChannelDelegate>
-@property(nonatomic, strong) GCKDeviceManager* deviceManager;
+@property(nonatomic, strong) DeviceManager* deviceManager;
 @property(nonatomic, strong) GCKDeviceScanner* deviceScanner;
 
 
