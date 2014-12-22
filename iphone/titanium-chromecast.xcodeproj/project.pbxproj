@@ -30,6 +30,7 @@
 		5DEED4291A4634560066664E /* ComAtticoosTitaniumChromecastDeviceManagerProxy.h in Headers */ = {isa = PBXBuildFile; fileRef = 5DEED4281A4634560066664E /* ComAtticoosTitaniumChromecastDeviceManagerProxy.h */; };
 		5DEED42D1A4634A00066664E /* ComAtticoosTitaniumChromecastDeviceManagerProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEED42C1A4634A00066664E /* ComAtticoosTitaniumChromecastDeviceManagerProxy.m */; };
 		5DEED4311A4637650066664E /* Device.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEED4301A4637650066664E /* Device.m */; };
+		5DEED4331A466D3E0066664E /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEED4321A466D3E0066664E /* DeviceManager.m */; };
 		AA747D9F0F9514B9006C5449 /* ComAtticoosTitaniumChromecast_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComAtticoosTitaniumChromecast_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -51,10 +52,13 @@
 		24DE9E0F11C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAtticoosTitaniumChromecastModuleAssets.h; path = Classes/ComAtticoosTitaniumChromecastModuleAssets.h; sourceTree = "<group>"; };
 		24DE9E1011C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAtticoosTitaniumChromecastModuleAssets.m; path = Classes/ComAtticoosTitaniumChromecastModuleAssets.m; sourceTree = "<group>"; };
 		5D1F38AD1A4618C5000A1FE2 /* GoogleCast.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleCast.framework; path = platform/GoogleCast.framework; sourceTree = "<group>"; };
+		5D268D911A48909C0008B304 /* DeviceManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeviceManagerDelegate.h; path = Classes/DeviceManagerDelegate.h; sourceTree = "<group>"; };
 		5DEED4281A4634560066664E /* ComAtticoosTitaniumChromecastDeviceManagerProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAtticoosTitaniumChromecastDeviceManagerProxy.h; path = Classes/ComAtticoosTitaniumChromecastDeviceManagerProxy.h; sourceTree = "<group>"; };
 		5DEED42C1A4634A00066664E /* ComAtticoosTitaniumChromecastDeviceManagerProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAtticoosTitaniumChromecastDeviceManagerProxy.m; path = Classes/ComAtticoosTitaniumChromecastDeviceManagerProxy.m; sourceTree = "<group>"; };
 		5DEED42F1A4637090066664E /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Device.h; path = Classes/Device.h; sourceTree = "<group>"; };
 		5DEED4301A4637650066664E /* Device.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Device.m; path = Classes/Device.m; sourceTree = "<group>"; };
+		5DEED4321A466D3E0066664E /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceManager.m; path = Classes/DeviceManager.m; sourceTree = "<group>"; };
+		5DEED4341A466D500066664E /* DeviceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeviceManager.h; path = Classes/DeviceManager.h; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* ComAtticoosTitaniumChromecast_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAtticoosTitaniumChromecast_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libComAtticoosTitaniumChromecast.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComAtticoosTitaniumChromecast.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +115,9 @@
 				24DD6CF81134B3F500162E58 /* ComAtticoosTitaniumChromecastModule.m */,
 				5DEED4281A4634560066664E /* ComAtticoosTitaniumChromecastDeviceManagerProxy.h */,
 				5DEED42C1A4634A00066664E /* ComAtticoosTitaniumChromecastDeviceManagerProxy.m */,
+				5DEED4321A466D3E0066664E /* DeviceManager.m */,
+				5DEED4341A466D500066664E /* DeviceManager.h */,
+				5D268D911A48909C0008B304 /* DeviceManagerDelegate.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -217,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24DD6CFA1134B3F500162E58 /* ComAtticoosTitaniumChromecastModule.m in Sources */,
+				5DEED4331A466D3E0066664E /* DeviceManager.m in Sources */,
 				24DE9E1211C5FE74003F90F6 /* ComAtticoosTitaniumChromecastModuleAssets.m in Sources */,
 				5DEED42D1A4634A00066664E /* ComAtticoosTitaniumChromecastDeviceManagerProxy.m in Sources */,
 				5DEED4311A4637650066664E /* Device.m in Sources */,

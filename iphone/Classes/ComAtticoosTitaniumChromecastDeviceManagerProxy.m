@@ -15,7 +15,7 @@
 {
     if (self = [super init]) {
         self.deviceScanner = [[GCKDeviceScanner alloc] init];
-        //self.deviceManager = [[GCKDeviceManager alloc] init];
+        self.deviceManager = [[DeviceManager alloc] init];
     }
     return self;
 }
@@ -36,7 +36,7 @@
 -(void)deviceDidComeOnline:(GCKDevice *)device
 {
     NSLog(@"Device came online %@", device.friendlyName);
-    Device *deviceProxy = [[Device alloc] initWithDevice:device];
+    Device *deviceProxy = [[Device alloc] initWithDevice:device initWithDeviceManager: self.deviceManager];
     NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:deviceProxy, @"device", nil];
     [self fireEvent:@"deviceOnline" withObject: event];
 }
@@ -44,7 +44,8 @@
 -(void)deviceDidGoOffline:(GCKDevice *)device
 {
     NSLog(@"Device went offline %@", device.friendlyName);
-    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:[[Device alloc] initWithDevice:device], @"device", nil];
+    Device *deviceProxy = [[Device alloc] initWithDevice:device initWithDeviceManager: self.deviceManager];
+    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:deviceProxy, @"device", nil];
     [self fireEvent:@"deviceOffline" withObject: event];
 }
 
@@ -55,7 +56,7 @@
     
     for (int i = 0; i < [devices count]; i++) {
         GCKDevice* currentDevice = [devices objectAtIndex: i];
-        [seralizedDevices addObject: [[Device alloc] initWithDevice:currentDevice]];
+        [seralizedDevices addObject: [[Device alloc] initWithDevice:currentDevice initWithDeviceManager: self.deviceManager]];
     }
     
     NSArray *finalArray = [NSArray arrayWithArray:seralizedDevices];
