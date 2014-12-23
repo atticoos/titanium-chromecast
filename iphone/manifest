@@ -5,9 +5,9 @@
 version: 0.1.0
 apiversion: 2
 description: titanium-chromecast
-author: Your Name
-license: Specify your license
-copyright: Copyright (c) 2014 by Your Company
+author: Atticus White
+license: MIT
+copyright: Copyright (c) 2014 by Robin Powered, Inc.
 
 # these should not be edited
 name: titanium-chromecast
