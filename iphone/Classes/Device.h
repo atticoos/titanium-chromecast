@@ -28,6 +28,7 @@
 -(void)addChannel:(id)args;
 -(void)removeChannel:(id)args;
 -(void)sendMessage:(id)message;
+-(void)sendJsonMessage:(id)message;
 
 -(BOOL)isConnected:(id)args;
 

@@ -23,7 +23,7 @@ deviceManager.addEventListener('deviceOnline', function (e) {
 	if (!deviceManager.isConnected()) {
 		device.connect(function () {
 			device.startApplication(function () {
-				device.sendMessage('Hello world!');
+				device.sendJsonMessage({foo: 'bar'});
 			});
 		});
 	}
@@ -101,23 +101,33 @@ This is the device component that returns the information about the current devi
 
 #### Device.connect(successCallback, errorCallback)
 Returns: `void`
+
 Connects to a device and executes the callback once connected or encounters an error
 
 #### Device.launchApplication(successCallback, errorCallback)
 Returns: `void`
+
 Starts the application on a device and executes the callback once connected or encounters an error
 
 #### Device.addChannel(namespace)
 Returns: `void`
+
 Creates a channel over the provided namespace on the device
 
 #### Device.removeChannel()
 Returns: `void`
+
 Removes a channel that was previously added, otherwise does nothing
 
 #### Device.sendMessage(string)
 Returns: `void`
+
 Sends a message over the channel to the chromecast app
+
+#### Device.sendJsonMessage(object)
+Returns: `void`
+
+Sends a JSON object as a message
 
 #### Device.isConnected()
 Returns: `Boolean` Default: `false`
