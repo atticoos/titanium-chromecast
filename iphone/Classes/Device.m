@@ -81,7 +81,6 @@
 -(void)addChannel:(id)channelNamespace
 {
     ENSURE_SINGLE_ARG(channelNamespace, NSString);
-    NSLog(@"Attemping to connect to %@", channelNamespace);
     [self.deviceManager addChannel:channelNamespace];
 }
 
@@ -92,9 +91,15 @@
 
 -(void)sendMessage:(id)message
 {
-    NSLog(@"Attemping to send message from device");
     ENSURE_SINGLE_ARG(message, NSString);
     [self.deviceManager sendMessage:message];
+}
+
+-(void)sendJsonMessage:(id)message
+{
+    id jsonDict = [message objectAtIndex: 0];;
+    NSString *jsonString = [GCKJSONUtils writeJSON:jsonDict];
+    [self.deviceManager sendMessage:jsonString];
 }
 
 -(void)onMessageReceived:(NSString*)message
