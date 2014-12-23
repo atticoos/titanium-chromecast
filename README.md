@@ -35,7 +35,7 @@ deviceManager.addEventListener('deviceOnline', function (e) {
 This module provides a few primary components that provide an API to the GoogleCast SDK. This API is not a 1-1 mapping to all the SDK endpoints, it's more of an abstraction to provide easier integrations. While all the capabilities of the SDK are available, they are exposed in different ways.
 
 ## Device Manager
-This is the first component to get started with a Chromecast device. This component provides the scanning services and an interface to all events that can take place with your Chromecast.
+The device manager oversees all the devices and manages your connectivity to the Chromecast. It provides an interface to the Chromecast for the devices to use. For interacting with the Chromecast directly, you will use the [device](#device), but you can still go back to the DeviceManager if necessary.
 
 
 ### Methods
@@ -53,7 +53,7 @@ Stops the scanning service
 #### DeviceManager.getDiscoveredDevices()
 Returns: `Array`
 
-Returns a collection of discovered [Devices](#devices).
+Returns a collection of discovered [Devices](#device).
 
 
 #### DeviceManager.isScanning()
