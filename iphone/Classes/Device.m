@@ -131,6 +131,7 @@
 
 -(void)onDeviceFailedToConnect:(NSError*)error
 {
+    NSLog(@"Error connecting to device");
     if (self.onDeviceFailedToConnectCallback != nil) {
         [self.onDeviceFailedToConnectCallback call:@[[error localizedDescription]] thisObject:self];
     }
