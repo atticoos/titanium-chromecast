@@ -24,6 +24,8 @@
 -(NSString*)getConnectedAppSessionID:(id)args;
 -(NSString*)getConnectedAppStatusText:(id)args;
 -(NSArray*)getDiscoveredDevices:(id)args;
+-(BOOL)hasConnectedDevice:(id)args;
+-(Device*)getConnectedDevice:(id)args;
 
 
 @end

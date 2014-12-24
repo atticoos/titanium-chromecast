@@ -59,7 +59,15 @@
     return [self.deviceManager.manager applicationStatusText];
 }
 
+-(BOOL)hasConnectedDevice:(id)args
+{
+    return self.deviceManager.device != nil;
+}
 
+-(Device*)getConnectedDevice:(id)args
+{
+    return self.deviceManager.device;
+}
 
 
 -(NSArray*)getDiscoveredDevices:(id)args

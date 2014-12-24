@@ -55,6 +55,16 @@ Returns: `Array`
 
 Returns a collection of discovered [Devices](#device).
 
+#### DeviceManager.hasConnectedDevice()
+Returns: `Boolean`
+
+Returns true/false if there is a device currently connected
+
+#### DeviceManager.getConnectedDevice()
+Returns: `Device` Default: `null`
+
+Returns the device that is currently connected, otherwise null
+
 
 #### DeviceManager.isScanning()
 Returns: `Boolean` Default: `false`
