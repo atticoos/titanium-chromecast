@@ -56,6 +56,30 @@
     }
 }
 
+// MEDIA CHANNELS
+-(void)addMediaChannel
+{
+    self.mediaChannel = [[GCKMediaControlChannel alloc] init];
+    self.mediaChannel.delegate = self;
+    [self.manager addChannel: self.mediaChannel];
+//    [self.mediaChannel requestStatus];
+}
+-(void)removeMediaChannel
+{
+    if (self.mediaChannel != nil) {
+        [self.manager removeChannel: self.mediaChannel];
+        self.mediaChannel = nil;
+    }
+}
+-(void)loadMedia:(GCKMediaInformation*)mediaInformation
+{
+    if (self.mediaChannel == nil) {
+        [self addMediaChannel];
+    }
+    [self.mediaChannel loadMedia:mediaInformation autoplay:TRUE playPosition:0];
+    NSLog(@"Initiated requst to media channel");
+}
+
 // channel - send message, forward message to channel
 -(void)sendMessage:(NSString*)message
 {
@@ -119,5 +143,25 @@
 {
     NSLog(@"Disconnected with error!");
 }
+
+// GCKMediaControlChannelDelegate public members
+-(void)mediaControlChannel:(GCKMediaControlChannel*)mediaControlChannel didCompleteLoadWithSessionID:(NSInteger)sessionID
+{
+    NSLog(@"Media control channel did complete load ith session id");
+}
+
+-(void)mediaControlChannel:(GCKMediaControlChannel *)mediaControlChannel didFailToLoadMediaWithError:(NSError *)error
+{
+    NSLog(@"Media control channel FAILED to load with error");
+    NSLog(@"Error: %@ %@", error, [error userInfo]);
+}
+
+-(void)mediaControlChannel:(GCKMediaControlChannel *)mediaControlChannel requestDidFailWithID:(NSInteger)requestID error:(NSError *)error
+{
+    NSLog(@"Media control channel FAILED to load with ID");
+    NSLog(@"Error: %@ %@", error, [error userInfo]);
+}
+
+
 
 @end

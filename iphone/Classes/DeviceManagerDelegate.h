@@ -5,6 +5,7 @@
 //  Created by Atticus White on 12/22/14.
 //
 //
+#import <GoogleCast/GoogleCast.h>
 
 @class Device;
 
@@ -19,5 +20,6 @@
 
 -(BOOL)isDeviceEqualToConnectedDevice:(Device*)device;
 -(BOOL)isConnectedToApp;
+-(void)loadMedia:(GCKMediaInformation*)mediaInformation;
 
 @end

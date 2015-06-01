@@ -10,7 +10,7 @@
 #import "DeviceManagerDelegate.h"
 #import <GoogleCast/GoogleCast.h>
 
-@interface Device : TiProxy
+@interface Device : TiProxy<GCKMediaControlChannelDelegate>
 
 @property(nonatomic, strong) GCKDevice* device;
 @property(nonatomic, strong) id<DeviceManagerDelegate> deviceManager;

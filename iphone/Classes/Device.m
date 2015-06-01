@@ -9,6 +9,17 @@
 #import "Device.h"
 @implementation Device
 
+NSString * const PROXY_KEY_VIDEO = @"video";
+NSString * const PROXY_KEY_METADATA = @"metadata";
+NSString * const PROXY_KEY_TITLE = @"title";
+NSString * const PROXY_KEY_SUBTITLE = @"subtitle";
+NSString * const PROXY_KEY_IMAGE = @"image";
+NSString * const PROXY_KEY_IMAGE_SRC = @"src";
+NSString * const PROXY_KEY_IMAGE_WIDTH = @"width";
+NSString * const PROXY_KEY_IMAGE_HEIGHT = @"height";
+NSString * const PROXY_KEY_VIDEO_SRC = @"src";
+NSString * const PROXY_KEY_VIDEO_CONTENT_TYPE = @"contentType";
+
 -(instancetype)initWithDevice:(GCKDevice*)device initWithDeviceManager:(id<DeviceManagerDelegate>)deviceManager
 {
     if (self = [super init]) {
@@ -76,6 +87,31 @@
         self.onApplicationFailedToLaunchCallback = [args objectAtIndex: 1];
     }
     [self.deviceManager launchApplication];
+}
+
+-(void)castVideo:(id)args
+{
+    ENSURE_SINGLE_ARG(args, NSDictionary);
+    NSDictionary *videoDict = args[PROXY_KEY_VIDEO];
+    NSDictionary *metaDataDict = args[PROXY_KEY_METADATA];
+    GCKMediaMetadata *metadata  = [[GCKMediaMetadata alloc] init];
+
+    
+    [metadata setString:@"This is a big black bunny" forKey: kGCKMetadataKeyTitle];
+    [metadata setString:@"This is the subtitle" forKey:kGCKMetadataKeySubtitle];
+    
+    [metadata addImage: [[GCKImage alloc] initWithURL: [[NSURL alloc] initWithString:@"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"] width:480 height: 360]];
+    
+    GCKMediaInformation *mediaInformation =
+    [[GCKMediaInformation alloc] initWithContentID:
+        @"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                        streamType:GCKMediaStreamTypeNone
+                                       contentType:@"video/mp4"
+                                          metadata:metadata
+                                    streamDuration:0
+                                        customData:nil];
+    [self.deviceManager loadMedia:mediaInformation];
+    
 }
 
 -(void)addChannel:(id)channelNamespace

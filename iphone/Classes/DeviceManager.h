@@ -11,11 +11,12 @@
 #import "Device.h"
 #import "DeviceManagerDelegate.h"
 
-@interface DeviceManager : NSObject<GCKDeviceManagerDelegate, DeviceManagerDelegate>
+@interface DeviceManager : NSObject<GCKDeviceManagerDelegate, DeviceManagerDelegate, GCKMediaControlChannelDelegate>
 
 @property(nonatomic, strong) Device* device;
 @property(nonatomic, strong) NSString* APPID;
 @property(nonatomic, strong) GCKDeviceManager* manager;
 @property(nonatomic, strong) Channel *channel;
+@property(nonatomic, strong) GCKMediaControlChannel *mediaChannel;
 
 @end
