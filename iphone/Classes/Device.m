@@ -12,7 +12,7 @@
 NSString * const PROXY_KEY_VIDEO = @"video";
 NSString * const PROXY_KEY_METADATA = @"metadata";
 NSString * const PROXY_KEY_TITLE = @"title";
-NSString * const PROXY_KEY_SUBTITLE = @"subtitle";
+NSString * const PROXY_KEY_SUBTITLE = @"subTitle";
 NSString * const PROXY_KEY_IMAGE = @"image";
 NSString * const PROXY_KEY_IMAGE_SRC = @"src";
 NSString * const PROXY_KEY_IMAGE_WIDTH = @"width";
@@ -94,19 +94,32 @@ NSString * const PROXY_KEY_VIDEO_CONTENT_TYPE = @"contentType";
     ENSURE_SINGLE_ARG(args, NSDictionary);
     NSDictionary *videoDict = args[PROXY_KEY_VIDEO];
     NSDictionary *metaDataDict = args[PROXY_KEY_METADATA];
-    GCKMediaMetadata *metadata  = [[GCKMediaMetadata alloc] init];
+    NSDictionary *metaDataImage;
+    GCKMediaMetadata *metadata;
+    
+    if (metaDataDict) {
+        metaDataImage = [metaDataDict objectForKey: PROXY_KEY_IMAGE];
+        
+        metadata = [[GCKMediaMetadata alloc] init];
+        if ([metaDataDict objectForKey:PROXY_KEY_TITLE]) {
+            [metadata setString:metaDataDict[PROXY_KEY_TITLE] forKey: kGCKMetadataKeyTitle];
+        }
+        if ([metaDataDict objectForKey: PROXY_KEY_SUBTITLE]) {
+            [metadata setString:metaDataDict[PROXY_KEY_SUBTITLE] forKey: kGCKMetadataKeySubtitle];
+        }
+        
+        if (metaDataImage) {
+            [metadata addImage: [[GCKImage alloc] initWithURL: [[NSURL alloc] initWithString: [metaDataImage objectForKey: PROXY_KEY_IMAGE_SRC]]
+                                                        width: [metaDataImage objectForKey: PROXY_KEY_IMAGE_WIDTH]
+                                                       height: [metaDataImage objectForKey: PROXY_KEY_IMAGE_HEIGHT]
+                                 ]];
+        }
+    }
 
-    
-    [metadata setString:@"This is a big black bunny" forKey: kGCKMetadataKeyTitle];
-    [metadata setString:@"This is the subtitle" forKey:kGCKMetadataKeySubtitle];
-    
-    [metadata addImage: [[GCKImage alloc] initWithURL: [[NSURL alloc] initWithString:@"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"] width:480 height: 360]];
-    
     GCKMediaInformation *mediaInformation =
-    [[GCKMediaInformation alloc] initWithContentID:
-        @"http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    [[GCKMediaInformation alloc] initWithContentID: [videoDict objectForKey: PROXY_KEY_VIDEO_SRC]
                                         streamType:GCKMediaStreamTypeNone
-                                       contentType:@"video/mp4"
+                                       contentType: [videoDict objectForKey: PROXY_KEY_VIDEO_CONTENT_TYPE]
                                           metadata:metadata
                                     streamDuration:0
                                         customData:nil];
