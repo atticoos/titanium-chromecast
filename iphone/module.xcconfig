@@ -25,5 +25,5 @@
 //
 // IMPORTANT NOTE: always use $(inherited) in your overrides
 //
-FRAMEWORK_SEARCH_PATHS=~/Library/Application\ Support/Titanium/modules/iphone/com.atticoos.titanium.chromecast/0.1.0/platform
+FRAMEWORK_SEARCH_PATHS=~/Library/Application\ Support/Titanium/modules/iphone/com.atticoos.titanium.chromecast/1.0.0/platform
 OTHER_LDFLAGS=$(inherited) -framework GoogleCast
