@@ -18,7 +18,7 @@ NSString * const PROXY_KEY_IMAGE_SRC = @"src";
 NSString * const PROXY_KEY_IMAGE_WIDTH = @"width";
 NSString * const PROXY_KEY_IMAGE_HEIGHT = @"height";
 NSString * const PROXY_KEY_VIDEO_SRC = @"src";
-NSString * const PROXY_KEY_VIDEO_CONTENT_TYPE = @"contentType";
+NSString * const PROXY_KEY_CONTENT_TYPE = @"contentType";
 
 -(instancetype)initWithDevice:(GCKDevice*)device initWithDeviceManager:(id<DeviceManagerDelegate>)deviceManager
 {
@@ -92,6 +92,9 @@ NSString * const PROXY_KEY_VIDEO_CONTENT_TYPE = @"contentType";
 -(void)castVideo:(id)args
 {
     ENSURE_SINGLE_ARG(args, NSDictionary);
+    
+    [self.deviceManager removeChannel];
+    
     NSDictionary *videoDict = args[PROXY_KEY_VIDEO];
     NSDictionary *metaDataDict = args[PROXY_KEY_METADATA];
     NSDictionary *metaDataImage;
@@ -119,12 +122,28 @@ NSString * const PROXY_KEY_VIDEO_CONTENT_TYPE = @"contentType";
     GCKMediaInformation *mediaInformation =
     [[GCKMediaInformation alloc] initWithContentID: [videoDict objectForKey: PROXY_KEY_VIDEO_SRC]
                                         streamType:GCKMediaStreamTypeNone
-                                       contentType: [videoDict objectForKey: PROXY_KEY_VIDEO_CONTENT_TYPE]
+                                       contentType: [videoDict objectForKey: PROXY_KEY_CONTENT_TYPE]
                                           metadata:metadata
                                     streamDuration:0
                                         customData:nil];
     [self.deviceManager loadMedia:mediaInformation];
+}
+
+-(void)castImage:(id)args
+{
+    ENSURE_SINGLE_ARG(args, NSDictionary);
     
+    [self.deviceManager removeChannel];
+    
+    GCKMediaInformation *mediaInformation = [[GCKMediaInformation alloc]
+                                             initWithContentID: [args objectForKey:PROXY_KEY_IMAGE_SRC]
+                                             streamType: GCKMediaStreamTypeNone
+                                             contentType:[args objectForKey: PROXY_KEY_CONTENT_TYPE]
+                                             metadata: nil
+                                             streamDuration: 0
+                                             customData: nil];
+    
+    [self.deviceManager loadMedia: mediaInformation];
 }
 
 -(void)addChannel:(id)channelNamespace

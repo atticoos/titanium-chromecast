@@ -76,6 +76,7 @@
     if (self.mediaChannel == nil) {
         [self addMediaChannel];
     }
+
     [self.mediaChannel loadMedia:mediaInformation autoplay:TRUE playPosition:0];
     NSLog(@"Initiated requst to media channel");
 }
