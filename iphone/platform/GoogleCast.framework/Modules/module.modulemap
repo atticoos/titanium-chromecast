@@ -1,0 +1,13 @@
+framework module GoogleCast {
+  umbrella header "GoogleCast.h"
+
+  export *
+  module * { export * }
+
+  link framework "AVFoundation"
+  link framework "CFNetwork"
+  link framework "CoreBluetooth"
+  link framework "CoreText"
+  link framework "Security"
+  link framework "SystemConfiguration"
+}

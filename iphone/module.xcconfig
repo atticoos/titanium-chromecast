@@ -25,5 +25,6 @@
 //
 // IMPORTANT NOTE: always use $(inherited) in your overrides
 //
-FRAMEWORK_SEARCH_PATHS=~/Library/Application\ Support/Titanium/modules/iphone/com.atticoos.titanium.chromecast/0.1.0/platform
-OTHER_LDFLAGS=$(inherited) -framework GoogleCast
+FRAMEWORK_SEARCH_PATHS=$(SRCROOT)/../../modules/iphone/com.atticoos.titanium.chromecast/1.0.0/platform
+
+OTHER_LDFLAGS=$(inherited) -framework GoogleCast -weak_framework Foundation -weak_framework Accelerate -weak_framework AudioToolbox -weak_framework AVFoundation -weak_framework CoreBluetooth -weak_framework CoreText -weak_framework MediaAccessibility -weak_framework MediaPlayer -weak_framework MediaToolbox -weak_framework SystemConfiguration

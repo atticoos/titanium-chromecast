@@ -2,8 +2,9 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 0.1.0
+version: 1.0.0
 apiversion: 2
+architectures: armv7 i386 x86_64 arm64
 description: titanium-chromecast
 author: Atticus White
 license: MIT
@@ -14,4 +15,4 @@ name: titanium-chromecast
 moduleid: com.atticoos.titanium.chromecast
 guid: afc5487a-45f3-43da-b0db-b30134a33930
 platform: iphone
-minsdk: 3.4.0.GA
+minsdk: 3.5.0.GA

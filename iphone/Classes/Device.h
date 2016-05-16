@@ -10,17 +10,21 @@
 #import "DeviceManagerDelegate.h"
 #import <GoogleCast/GoogleCast.h>
 
-@interface Device : TiProxy
+@interface Device : TiProxy<GCKMediaControlChannelDelegate>
 
 @property(nonatomic, strong) GCKDevice* device;
 @property(nonatomic, strong) id<DeviceManagerDelegate> deviceManager;
-
+@property(nonatomic) NSTimer *updateTimer;
+@property(nonatomic) NSTimeInterval lastPosition;
+@property(nonatomic, strong) GCKMediaControlChannel *mediaChannel;
+@property(nonatomic, strong) NSNumber* playerState;
 
 -(instancetype)initWithDevice:(GCKDevice*)device
    initWithDeviceManager:(id<DeviceManagerDelegate>)deviceManager;
 -(id)friendlyName;
 -(id)ipAddress;
 -(id)deviceID;
+-(id)statusText;
 
 -(NSDictionary*)toJSON:(id)args;
 -(void)connect:(id)args;
@@ -29,6 +33,7 @@
 -(void)removeChannel:(id)args;
 -(void)sendMessage:(id)message;
 -(void)sendJsonMessage:(id)message;
+-(void)castVideo:(id)args;
 
 -(BOOL)isConnected:(id)args;
 
@@ -52,5 +57,6 @@
 // EVENT TRIGGERS
 
 -(void)onMessageReceived:(NSString*)message;
+-(void)onChannelDisconnect;
 
 @end

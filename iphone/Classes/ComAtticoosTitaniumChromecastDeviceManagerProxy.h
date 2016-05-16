@@ -1,3 +1,4 @@
+
 //
 //  ComAtticoosTitaniumChromecastDeviceManagerProxy.h
 //  titanium-chromecast
@@ -19,13 +20,19 @@
 -(void)startScanning:(id)args;
 -(void)stopScanning:(id)args;
 -(BOOL)isScanning:(id)args;
--(BOOL)isConnected:(id)args;
--(BOOL)isConnectedToApp:(id)args;
+-(NSNumber*)isConnected;
+-(NSNumber*)isConnectedToApp;
+-(NSNumber*)playerState:(id)args;
+-(void)pauseChannel:(id)args;
+-(void)changeVolume:(id)args;
+-(void)changePlaybackPercent:(id)args;
+-(void)incrementPlaybackBy:(id)args;
+-(void)disconnect:(id)args;
 -(NSString*)getConnectedAppSessionID:(id)args;
--(NSString*)getConnectedAppStatusText:(id)args;
+-(NSString*)connectedAppStatusText;
 -(NSArray*)getDiscoveredDevices:(id)args;
--(BOOL)hasConnectedDevice:(id)args;
--(Device*)getConnectedDevice:(id)args;
+-(NSNumber*)hasConnectedDevice:(id)args;
+-(Device*)connectedDevice;
 
 
 @end
